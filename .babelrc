@@ -1,0 +1,18 @@
+{
+  "plugins": [
+    // Stage 0
+    "@babel/plugin-proposal-function-bind",
+    "@babel/transform-runtime"
+  ],
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": ["last 2 versions"]
+        }
+      }
+    ],
+    "@babel/preset-react"
+  ],
+}
