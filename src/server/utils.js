@@ -3,12 +3,16 @@ import {renderToString} from 'react-dom/server';
 // react服务端渲染路由需要使用StaticRouter
 import {StaticRouter} from 'react-router-dom';
 import Router from '../Router';
+import {Provider} from 'react-redux';
+import getStore from '../containers/store';
 
 export const render = (ctx) => {
   const contents = renderToString(
-    <StaticRouter location={ctx.url} context={{}}>
-      <Router></Router>
-    </StaticRouter>
+    <Provider store={getStore()}>
+      <StaticRouter location={ctx.url} context={{}}>
+        <Router></Router>
+      </StaticRouter>
+    </Provider>
   );
 
   return `<!DOCTYPE html>
