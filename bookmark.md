@@ -1,1 +1,2 @@
 1. bable v7版本以上 stage-0 已经移除， 以 @babel/plugin-proposal-function-bind 插件代替 -- https://github.com/babel/babel/blob/755ec192e22c6b6e00782e4810366d0166fdbebd/packages/babel-preset-stage-0/README.md
+2. react-router-config 一个方便统一管理路由的依赖 ---https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config (对应的路由异步加载貌似需使用react-loadable)

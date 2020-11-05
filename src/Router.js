@@ -1,13 +1,24 @@
-import React from 'react';
-import {Route} from 'react-router-dom';
 import Home from "./containers/Home";
 import Login from "./containers/Login"
 
-export default () => {
-  return (
-    <div>
-      <Route path='/' exact component={Home}/>
-      <Route path='/login' exact component={Login}/>
-    </div>
-  );
-}
+const routes = [
+  {
+    path: "/",
+    component: Home,
+    // exact: true,
+    loadData: Home.loadData,
+    routes:[
+      {
+        path: "/tt",
+        exact: true,
+        component: Login,
+      }
+    ]
+  },
+  {
+    path: "/login",
+    exact: true,
+    component: Login,
+  }
+]
+export default routes;

@@ -2,8 +2,9 @@ import React, {useEffect} from 'react';
 import Header from '../../components/Header';
 import {getNewsList} from './store/actions';
 import {useSelector, useDispatch} from 'react-redux';
+import { renderRoutes } from "react-router-config";
 
-export default () => {
+export default ({route}) => {
   const name = useSelector(({root}) => root.name);
   const list = useSelector(({home}) => home.list);
   const dispatch = useDispatch();
@@ -23,5 +24,8 @@ export default () => {
       }
     </ul>
     <button onClick={() => console.log('click button')}>click</button>
+    <div>
+      {renderRoutes(route.routes)}
+    </div>
   </div> 
 }

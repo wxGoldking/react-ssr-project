@@ -1,20 +1,5 @@
-import React from 'React';
-import {renderToString} from 'react-dom/server';
-// react服务端渲染路由需要使用StaticRouter
-import {StaticRouter} from 'react-router-dom';
-import Router from '../Router';
-import {Provider} from 'react-redux';
-import getStore from '../containers/store';
 
-export const render = (ctx) => {
-  const contents = renderToString(
-    <Provider store={getStore()}>
-      <StaticRouter location={ctx.url} context={{}}>
-        <Router></Router>
-      </StaticRouter>
-    </Provider>
-  );
-
+export const render = (contents) => {
   return `<!DOCTYPE html>
   <html lang="en">
   <head>
