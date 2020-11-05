@@ -1,5 +1,18 @@
+import React from 'React';
+import {renderToString} from 'react-dom/server';
+import { renderRoutes } from "react-router-config";
+// react服务端渲染路由需要使用StaticRouter
+import {StaticRouter} from 'react-router-dom';
+import {Provider} from 'react-redux';
 
-export const render = (contents) => {
+export const render = (store, routes, url) => {
+  const contents = renderToString(
+    <Provider store={store}>
+      <StaticRouter location={url}>
+        {renderRoutes(routes)}
+      </StaticRouter>
+    </Provider>
+  )
   return `<!DOCTYPE html>
   <html lang="en">
   <head>
@@ -10,6 +23,11 @@ export const render = (contents) => {
   </head>
   <body>
     <div id="root">${contents}</div>
+    <script>
+      window._content = {
+        state: ${JSON.stringify(store.getState())}
+      }
+    </script>
     <script src="/index.js"></script>
   </body>
   </html>`;

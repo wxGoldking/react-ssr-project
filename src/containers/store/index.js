@@ -18,4 +18,12 @@ const reducer = combineReducers({
     home: HomeReducer
 })
 
-export default () => createStore(reducer, applyMiddleware(logger, thunk));
+// 服务端store
+// 服务器端的 Store 是所有用户都要用的，每个用户访问的时候，这个函数重新执行，为每个用户提供一个独立的 Store, 而不是提前创建好的一个单例：
+export const getServerStore = () => createStore(reducer, applyMiddleware(thunk));
+
+// 客户端store
+export const getClientStore = () => {
+    const initState = window._content.state;
+    return createStore(reducer, initState, applyMiddleware(logger, thunk));
+}

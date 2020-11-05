@@ -4,12 +4,14 @@ import {getNewsList} from './store/actions';
 import {useSelector, useDispatch} from 'react-redux';
 import { renderRoutes } from "react-router-config";
 
-export default ({route}) => {
+const Home = ({route}) => {
   const name = useSelector(({root}) => root.name);
   const list = useSelector(({home}) => home.list);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getNewsList());
+    if(!list.length) {
+      dispatch(getNewsList());
+    }
   }, [])
   return <div>
     <Header></Header>
@@ -29,3 +31,9 @@ export default ({route}) => {
     </div>
   </div> 
 }
+
+Home.loadData = (store) => {
+  return store.dispatch(getNewsList());
+}
+
+export default Home;
