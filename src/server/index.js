@@ -4,6 +4,7 @@ import KoaStatic from 'koa-static';
 import { matchRoutes } from "react-router-config";
 import routes from '../Router';
 import {getServerStore} from '../containers/store';
+import proxy from 'koa-server-http-proxy';
 
 import path from 'path';
 import {render} from './utils';
@@ -12,6 +13,12 @@ const app = new Koa();
 const router = new KoaRouter();
 
 app.use(KoaStatic(path.join(__dirname, '../public'))); // 放在最后表示先匹配路由，放在最前表示先匹配静态资源
+
+app.use(proxy('/api', {
+  target: 'http://jianjiyudao.com:8888',
+  // pathRewrite: { '^/api': 'api/4/' },
+  changeOrigin: true
+}))
 
 router.get("/(.*)", async ctx => {
   const store = getServerStore();
