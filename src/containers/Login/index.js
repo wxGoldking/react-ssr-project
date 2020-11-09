@@ -5,7 +5,7 @@ import useStyles from 'isomorphic-style-loader/useStyles'
 const Login = () => {
   useStyles(styles);
   return <div className={styles.form}>
-    <h3>Login Page</h3>
+    <h3 className={styles.title}>Login Page</h3>
     用户名：<input type="text"/>
     <br/>
     密码：<input type="password"/>

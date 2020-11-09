@@ -19,6 +19,7 @@ module.exports = merge(baseConfig, {
         use: ['isomorphic-style-loader', {
           loader: 'css-loader',
           options: {
+            esModule: false,
             importLoaders: 1,
             modules: {
               compileType: 'module',

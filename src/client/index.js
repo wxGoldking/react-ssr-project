@@ -8,12 +8,9 @@ import {Provider} from 'react-redux';
 import {getClientStore} from '../containers/store';
 
 const insertCss = (...styles) => {
-  const removeCss = styles.map(style => {
-    console.log(style)
-    return style._insertCss();
-  });
+  const removeCss = styles.map(style => style._insertCss());
   return () => removeCss.forEach(dispose => dispose());
-}
+};
 
 const App = () => {
   return <StyleContext.Provider value={{ insertCss }}>

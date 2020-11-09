@@ -28,7 +28,7 @@ export const render = (store, routes, url) => {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <style>${[...css].join('\n')}</style>
+    <style id="ssr-style">${[...css].join('\n')}</style>
     <title>React-SSR</title>
   </head>
   <body>

@@ -13,16 +13,20 @@ module.exports = merge(baseConfig, {
     rules: [
       { 
         test: /\.css$/i,
-        use: ['style-loader', {
-          loader: 'css-loader',
-          options: {
-            importLoaders: 1,
-            modules: {
-              compileType: 'module',
-              localIdentName: '[name]_[local]_[hash:base64:5]'
-            },
+        use: [
+          'isomorphic-style-loader', 
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              esModule: false,
+              modules: {
+                compileType: 'module',
+                localIdentName: '[name]_[local]_[hash:base64:5]'
+              },
+            }
           }
-        }]
+        ]
       },
     ]
   }

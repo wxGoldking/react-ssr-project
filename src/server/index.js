@@ -33,9 +33,6 @@ router.get("/(.*)", async ctx => {
   })
   // 执行数据请求，为store灌入初始数据
   await Promise.all(promiseDatas);
-  const context = {
-    css: []
-  };
   ctx.body = render(store, routes, ctx.url);
 })
 app.use(router.routes()).use(router.allowedMethods()); // use(router.allowedMethods()) 会在接口地址正确，请求方法错误时返回Method Not Allowed 405
