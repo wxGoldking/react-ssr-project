@@ -8,5 +8,22 @@ module.exports = merge(baseConfig, {
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'public')
+  },
+  module: {
+    rules: [
+      { 
+        test: /\.css$/i,
+        use: ['style-loader', {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            modules: {
+              compileType: 'module',
+              localIdentName: '[name]_[local]_[hash:base64:5]'
+            },
+          }
+        }]
+      },
+    ]
   }
 })

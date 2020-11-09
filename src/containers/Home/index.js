@@ -1,8 +1,6 @@
 import React, {useEffect} from 'react';
-import Header from '../../components/Header';
 import {getNewsList} from './store/actions';
 import {useSelector, useDispatch} from 'react-redux';
-import { renderRoutes } from "react-router-config";
 
 const Home = ({route}) => {
   const name = useSelector(({root}) => root.name);
@@ -14,7 +12,6 @@ const Home = ({route}) => {
     }
   }, [])
   return <div>
-    <Header></Header>
     <h1>Home Page !!!</h1>
     <h2>name: {name}</h2>
     <ul>
@@ -26,9 +23,6 @@ const Home = ({route}) => {
       }
     </ul>
     <button onClick={() => console.log('click button')}>click</button>
-    <div>
-      {renderRoutes(route.routes)}
-    </div>
   </div> 
 }
 

@@ -2,16 +2,27 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
 import { renderRoutes } from "react-router-config";
+import StyleContext from 'isomorphic-style-loader/StyleContext'
 import routes from '../Router';
 import {Provider} from 'react-redux';
-import {getClientStore} from '../containers/store'
+import {getClientStore} from '../containers/store';
+
+const insertCss = (...styles) => {
+  const removeCss = styles.map(style => {
+    console.log(style)
+    return style._insertCss();
+  });
+  return () => removeCss.forEach(dispose => dispose());
+}
 
 const App = () => {
-  return <Provider store={getClientStore()}>
-    <BrowserRouter>
-      {renderRoutes(routes)}
-    </BrowserRouter>
-  </Provider>
+  return <StyleContext.Provider value={{ insertCss }}>
+    <Provider store={getClientStore()}>
+      <BrowserRouter>
+        {renderRoutes(routes)}
+      </BrowserRouter>
+    </Provider>
+  </StyleContext.Provider>
 }
 
 ReactDom.hydrate(<App />, document.getElementById('root'))
