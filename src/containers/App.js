@@ -1,7 +1,7 @@
-import  React from 'react';
+import  React, {useEffect} from 'react';
 import Header from '../components/Header';
+import {getLoginStatus} from './store/actions';
 import { renderRoutes } from "react-router-config";
-// import "antd/dist/antd.css";
 
 
 const App = ({route}) => {
@@ -11,6 +11,10 @@ const App = ({route}) => {
             {renderRoutes(route.routes)}
         </div>
     </div>
+}
+
+App.loadData = (store) => {
+    return store.dispatch(getLoginStatus())
 }
 
 export default App;

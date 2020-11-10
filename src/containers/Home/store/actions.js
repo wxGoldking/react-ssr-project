@@ -7,7 +7,7 @@ const changeNewsList = (list) => ({
 export const getNewsList = () => {
   return (dispatch, getState, http) => {
     return http.get('/api/news').then(({data}) => {
-      dispatch(changeNewsList(data.data));
+      dispatch(changeNewsList(data));
     }).catch(e => console.log(e))
   };
 };

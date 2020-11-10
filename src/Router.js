@@ -6,6 +6,7 @@ const routes = [
   {
     path: "/",
     component: App,
+    loadData: App.loadData,
     routes:[
       {
         path: "/",
@@ -22,4 +23,5 @@ const routes = [
     ]
   }
 ]
+
 export default routes;

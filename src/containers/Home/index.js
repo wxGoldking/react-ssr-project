@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import useStyles from 'isomorphic-style-loader/useStyles'
 import styles from './index.css';
 
-const Home = ({route}) => {
+const Home = () => {
   const name = useSelector(({root}) => root.name);
   const list = useSelector(({home}) => home.list);
   const dispatch = useDispatch();

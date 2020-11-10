@@ -29,6 +29,7 @@ export const render = (store, routes, url) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style id="ssr-style">${[...css].join('\n')}</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/4.8.2/antd.min.css" integrity="sha512-CPolmBEaYWn1PClN5taQQ0ucEhAt+9j7+Tiog/SblkFjZ5k6M3TioqmlpcHKwUhIcsu1s7lgnX4Plsb6T8Kq5A==" crossorigin="anonymous" />
     <title>React-SSR</title>
   </head>
   <body>

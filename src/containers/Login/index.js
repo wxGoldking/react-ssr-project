@@ -1,16 +1,33 @@
 import React, {useState} from 'react';
-import { Button } from 'antd';
+import { Button, Input} from 'antd';
+import {login} from '../store/actions';
+import {useDispatch} from 'react-redux';
 import styles from './index.css';
 import useStyles from 'isomorphic-style-loader/useStyles'
 const Login = () => {
   useStyles(styles);
+  const [form, setForm] = useState({
+    name: '',
+    password: ''
+  });
+  const dispatch = useDispatch();
+  const loginHandle = () => {
+    dispatch(login(form));
+  }
+  const setData = (key) => (e) => {
+    setForm({
+      ...form,
+      [key]: e.target.value
+    })
+  }
   return <div className={styles.form}>
     <h3 className={styles.title}>Login Page</h3>
-    用户名：<input type="text"/>
+    用户名：<Input type="text" value={form.name} onChange={setData('name')}/>
+    <br/><br/>
+    密码：<Input type="password" value={form.password} onChange={setData('password')}/>
     <br/>
-    密码：<input type="password"/>
-    <Button type="primary">提交</Button>
+    <br/>
+    <Button type="primary" onClick={loginHandle}>提交</Button>
   </div> 
 }
-
 export default Login;

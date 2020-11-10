@@ -21,7 +21,7 @@ app.use(proxy('/api', {
 }))
 
 router.get("/(.*)", async ctx => {
-  const store = getServerStore();
+  const store = getServerStore(ctx);
   // 获取匹配到的路由
   const matchedRoutes = matchRoutes(routes, ctx.url);
   // 得到数据请求数组 --- 一组promise
