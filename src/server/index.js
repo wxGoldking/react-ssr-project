@@ -33,7 +33,18 @@ router.get("/(.*)", async ctx => {
   })
   // 执行数据请求，为store灌入初始数据
   await Promise.all(promiseDatas);
-  ctx.body = render(store, routes, ctx.url);
+  const context = {};
+  const html = render(store, routes, ctx.url, context);
+  console.log(context)
+  if(context.action === "REPLACE") {
+    // 301 重定向, StaticRouter 发现有 Redict 就会注入 context 301 重定向内容
+    ctx.status = 301;
+    ctx.redirect(context.url);
+  }
+  if(context.NOT_FOUND) {
+    ctx.status = 404;
+  }
+  ctx.body = html;
 })
 app.use(router.routes()).use(router.allowedMethods()); // use(router.allowedMethods()) 会在接口地址正确，请求方法错误时返回Method Not Allowed 405
 

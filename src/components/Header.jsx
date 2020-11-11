@@ -17,7 +17,11 @@ export default () => {
     {
       !isLogin 
       ? <Link to="/login">登录</Link>
-      : <Button type="link" onClick={loginOutHandle}>退出</Button>
+      : <>
+        <Link to="/personal">个人</Link>
+        &nbsp;
+        <Button type="link" onClick={loginOutHandle}>退出</Button>
+      </>
     }
   </div> 
 }

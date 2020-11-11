@@ -6,7 +6,7 @@ import StyleContext from 'isomorphic-style-loader/StyleContext';
 import {StaticRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 
-export const render = (store, routes, url) => {
+export const render = (store, routes, url, context) => {
   const css = new Set();
   const insertCss = (...styles) => {
     styles.forEach(style => {
@@ -16,7 +16,7 @@ export const render = (store, routes, url) => {
   const contents = renderToString(
     <StyleContext.Provider value={{ insertCss }}>
       <Provider store={store}>
-        <StaticRouter location={url}>
+        <StaticRouter location={url} context={context}>
           {renderRoutes(routes)}
         </StaticRouter>
       </Provider>

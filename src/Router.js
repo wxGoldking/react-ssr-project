@@ -1,6 +1,8 @@
 import App from "./containers/App"
 import Home from "./containers/Home";
-import Login from "./containers/Login"
+import Login from "./containers/Login";
+import Personal from "./containers/Personal";
+import NotFound from "./containers/NotFound";
 
 const routes = [
   {
@@ -19,6 +21,14 @@ const routes = [
         path: "/login",
         exact: true,
         component: Login,
+      },
+      {
+        path: "/personal",
+        exact: true,
+        component: Personal
+      },
+      {
+        component: NotFound,
       }
     ]
   }
