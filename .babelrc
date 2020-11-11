@@ -2,8 +2,7 @@
   "plugins": [
     // Stage 0
     "@babel/plugin-proposal-function-bind",
-    "@babel/transform-runtime",
-    ["import", { "libraryName": "antd"}]
+    "@babel/transform-runtime"
   ],
   "presets": [
     [

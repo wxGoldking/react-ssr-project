@@ -1,7 +1,8 @@
-import  React, {useEffect} from 'react';
+import  React from 'react';
 import Header from '../components/Header';
 import {getLoginStatus} from './store/actions';
 import { renderRoutes } from "react-router-config";
+import './index.css';
 
 
 const App = ({route}) => {

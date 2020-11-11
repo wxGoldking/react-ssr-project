@@ -14,7 +14,7 @@ module.exports = merge(baseConfig, {
       { 
         test: /\.css$/i,
         use: [
-          'isomorphic-style-loader', 
+          'style-loader', 
           {
             loader: 'css-loader',
             options: {

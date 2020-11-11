@@ -35,7 +35,6 @@ router.get("/(.*)", async ctx => {
   await Promise.all(promiseDatas);
   const context = {};
   const html = render(store, routes, ctx.url, context);
-  console.log(context)
   if(context.action === "REPLACE") {
     // 301 重定向, StaticRouter 发现有 Redict 就会注入 context 301 重定向内容
     ctx.status = 301;

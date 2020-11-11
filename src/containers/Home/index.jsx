@@ -1,14 +1,13 @@
 import React, {useEffect} from 'react';
 import {getNewsList} from './store/actions';
 import {useSelector, useDispatch} from 'react-redux';
-import useStyles from 'isomorphic-style-loader/useStyles'
+import WithStyles from '../../components/WithStyles';
 import styles from './index.css';
 
-const Home = () => {
+const Home = WithStyles(() => {
   const name = useSelector(({root}) => root.name);
   const list = useSelector(({home}) => home.list);
   const dispatch = useDispatch();
-  useStyles(styles);
   useEffect(() => {
     if(!list.length) {
       dispatch(getNewsList());
@@ -27,10 +26,9 @@ const Home = () => {
     </ul>
     <button onClick={() => console.log('click button')}>click</button>
   </div> 
-}
+}, styles)
 
 Home.loadData = (store) => {
   return store.dispatch(getNewsList());
 }
-
 export default Home;

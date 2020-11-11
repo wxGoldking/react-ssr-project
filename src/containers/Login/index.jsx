@@ -2,10 +2,9 @@ import React, {useState} from 'react';
 import { Button, Input} from 'antd';
 import {login} from '../store/actions';
 import {useDispatch} from 'react-redux';
+import WithStyles from '../../components/WithStyles';
 import styles from './index.css';
-import useStyles from 'isomorphic-style-loader/useStyles'
-const Login = () => {
-  useStyles(styles);
+const Login = WithStyles(() => {
   const [form, setForm] = useState({
     name: '',
     password: ''
@@ -29,5 +28,5 @@ const Login = () => {
     <br/>
     <Button type="primary" onClick={loginHandle}>提交</Button>
   </div> 
-}
+}, styles)
 export default Login;
