@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Button, Input} from 'antd';
 import {login} from '../store/actions';
 import {useDispatch} from 'react-redux';
+import {Helmet} from "react-helmet";
 import WithStyles from '../../components/WithStyles';
 import styles from './index.css';
 const Login = WithStyles(() => {
@@ -20,6 +21,10 @@ const Login = WithStyles(() => {
     })
   }
   return <div className={styles.form}>
+    <Helmet>
+        <title>登录</title>
+        <meta name="description" content="登录" />
+    </Helmet>
     <h3 className={styles.title}>Login Page</h3>
     用户名：<Input type="text" value={form.name} onChange={setData('name')}/>
     <br/><br/>

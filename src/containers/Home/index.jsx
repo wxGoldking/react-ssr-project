@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {getNewsList} from './store/actions';
 import {useSelector, useDispatch} from 'react-redux';
 import WithStyles from '../../components/WithStyles';
+import {Helmet} from "react-helmet";
 import styles from './index.css';
 
 const Home = WithStyles(() => {
@@ -14,6 +15,10 @@ const Home = WithStyles(() => {
     }
   }, [])
   return <div>
+    <Helmet>
+        <title>首页</title>
+        <meta name="description" content="首页" />
+    </Helmet>
     <h1 className={styles.title}>Home Page !!!</h1>
     <h2>name: {name}</h2>
     <ul>
